@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/paper-dashboard-angular-darwin-arm64
 
 # dependencies
 /node_modules

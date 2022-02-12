@@ -1,34 +1,69 @@
 const {app, BrowserWindow} = require('electron')
 const url = require("url");
 const path = require("path");
+const fs = require('fs');
 
 let mainWindow
+
+
+// var configFile = JSON.parse(readFileSync('./config.json'));
+//fs.writeFile('groceries.csv', 'hello');
+
+// async function readFile(filePath) {
+//
+//     try {
+//         const data = await fs.promises.readFile(filePath);
+//         const jsonData =  JSON.parse(data);
+//         console.log('Input Config json format Corrent');
+//         // if (fs.existsSync('config.json')) {
+//         //     await fs.promises.unlink('config.json');
+//         // }
+//
+//         await fs.promises.writeFile('config.json', data);
+//     } catch (error) {
+//         console.error(`Got an error trying to read the file: ${error.message}`);
+//     }
+// }
+// readFile('config_init.json');
+
+// fs.promises.rmdir("configdir");
 
 function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+      additionalArguments: ["myvarvalue", "secondvarvalue", "--another=something"]
+    },
+    icon: path.join(__dirname, `/dist/assets/img/angular2-logo.png`)
   })
 
-  mainWindow.loadURL(
+    // mainWindow.loadFile("public/print.html", {query: {"data": JSON.stringify(data)}});
+
+
+    mainWindow.loadURL(
       url.format({
         pathname: path.join(__dirname, `/dist/index.html`),
         protocol: "file:",
         slashes: true
       })
   );
+
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+ // mainWindow.webContents.openDevTools()
 
   mainWindow.on('closed', function () {
     mainWindow = null
   })
 }
 
-app.on('ready', createWindow)
+
+app.on("ready", () => {
+    createWindow();
+});
+
+// app.on('ready', createWindow)
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()

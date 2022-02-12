@@ -15,7 +15,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './shared/login/login.component';
 import { InstallationComponent } from './pages/installation/installation.component';
 import { FloorPlansComponent } from './pages/floor-plans/floor-plans.component';
-
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import { FloorPlansComponent } from './pages/floor-plans/floor-plans.component';
     FloorPlansComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes,{
       useHash: true
