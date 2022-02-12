@@ -1,0 +1,20 @@
+.card-stats {
+    text-align: center;
+}
+
+.card-icon {
+    font-size: 40px;
+}
+
+.card-stats .card-body .card-title {
+    margin-top: 0px;
+}
+
+.card-stats .card-footer .stats {
+    font-size: 10px;
+}
+
+.card-stats {
+    border: 1px solid #9f9f9f;
+    cursor: pointer;
+}

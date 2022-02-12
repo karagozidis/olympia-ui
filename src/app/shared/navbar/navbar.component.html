@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+  <div class="container-fluid">
+    <div class="navbar-wrapper">
+      <div class="navbar-minimize">
+        <button class="btn btn-icon btn-round showHideSidemenuBtn" id="minimizeSidebar" (click)="updateToggle()"
+                style="box-shadow: 0 2px 2px 0 rgba(53, 53, 53, 0.2), 0 3px 1px -2px rgba(153, 153, 153, 0.2), 0 1px 5px 0 rgba(153, 153, 153, 0.12) !important;">
+          <i class="fa fa-ellipsis-v text-center visible-on-sidebar-regular"></i>
+        </button>
+      </div>
+      <div class="navbar-toggle" (click)="sidebarToggle()">
+        <button type="button" class="navbar-toggler">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <a class="navbar-brand" href="javascript:void(0)">{{getTitle()}}</a>
+    </div>
+    <button class="navbar-toggler" type="button" (click)="collapse()"
+      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+      <span class="navbar-toggler-bar navbar-kebab"></span>
+      <span class="navbar-toggler-bar navbar-kebab"></span>
+      <span class="navbar-toggler-bar navbar-kebab"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="collapseExample" [ngbCollapse]="isCollapsed">
+      <form>
+        <div class="input-group no-border">
+          <input type="text" value="" class="form-control" placeholder="Search...">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <i class="nc-icon nc-zoom-split"></i>
+            </div>
+          </div>
+        </div>
+      </form>
+      <ul class="navbar-nav">
+
+        <li style="cursor: pointer;"
+            class="nav-item btn-rotate"
+            ngbDropdown
+            placement="bottom-left">
+          <a class="nav-link" ngbDropdownToggle id="languageDropdownMenuLink" href="javascript:void(0)" style="padding-right: 3px;">
+            <img style="width: 18px; padding-bottom: 4px; margin-right: 4px;"
+                 src="../../../assets/img/flags/4x3/gb.svg">
+            <p>
+              <span class="d-lg-none d-md-block">Languages</span>
+            </p>
+          </a>
+          <div ngbDropdownMenu aria-labelledby="languageDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
+            <a ngbDropdownItem (click)="setLanguage('en')" style="font-size: 12px;">
+              <img style="width: 25px;" src="../../../assets/img/flags/4x3/gb.svg">
+              ENGLISH
+            </a>
+            <a ngbDropdownItem (click)="setLanguage('gr')" style="font-size: 12px;">
+              <img style="width: 25px;" src="../../../assets/img/flags/4x3/gr.svg">
+              ΕΛΛΗΝΙΚΑ
+            </a>
+            <a ngbDropdownItem (click)="setLanguage('gr')" style="font-size: 12px;">
+              <img style="width: 25px;" src="../../../assets/img/flags/4x3/no.svg">
+              NORSK
+            </a>
+            <a ngbDropdownItem (click)="setLanguage('gr')" style="font-size: 12px;">
+              <img style="width: 25px;" src="../../../assets/img/flags/4x3/se.svg">
+              SVENSK
+            </a>
+            <a ngbDropdownItem (click)="setLanguage('gr')" style="font-size: 12px;">
+              <img style="width: 25px;" src="../../../assets/img/flags/4x3/de.svg">
+              DEUTSCHE
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item btn-rotate" ngbDropdown placement="bottom-left">
+          <a class="nav-link" ngbDropdownToggle id="navbarDropdownMenuLink" >
+            <i class="fa fa-cog"></i>
+            <p>
+              <span class="d-lg-none d-md-block">Some Actions</span>
+            </p>
+          </a>
+          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
+            <a ngbDropdownItem href="javascript:void(0)">Actions</a>
+            <a ngbDropdownItem href="javascript:void(0)" [routerLink]="'/pages/login'">Logout</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
