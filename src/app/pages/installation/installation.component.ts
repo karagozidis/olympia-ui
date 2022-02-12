@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import configs from './../../../../config.json';
 
 @Component({
-  selector: 'app-installation',
-  templateUrl: './installation.component.html',
-  styleUrls: ['./installation.component.css']
+    selector: 'app-installation',
+    templateUrl: './installation.component.html',
+    styleUrls: ['./installation.component.css']
 })
 export class InstallationComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
+    readFileTest() {
+        alert(JSON.stringify(configs[0]));
+    }
 }
