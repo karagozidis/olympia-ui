@@ -32,11 +32,12 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true,
       additionalArguments: ["myvarvalue", "secondvarvalue", "--another=something"]
     },
-    icon: path.join(__dirname, `/dist/assets/img/angular2-logo.png`)
+    icon: path.join(__dirname, `/dist/assets/img/icons8-app-64.png`)
   })
 
     // mainWindow.loadFile("public/print.html", {query: {"data": JSON.stringify(data)}});
