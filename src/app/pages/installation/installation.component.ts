@@ -1,48 +1,41 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+
+declare var electron: any;
 
 @Component({
     selector: 'app-installation',
     templateUrl: './installation.component.html',
     styleUrls: ['./installation.component.css']
 })
-export class InstallationComponent implements OnInit {
+export class InstallationComponent implements OnInit, OnDestroy {
+    electronEventHandler;
 
-    // dataJson: Observable<unknown>;
-    // dynamicallyLoadJsonFile = import('./../../../assets/config.json');
+    constructor(private http: HttpClient, private _ngZone: NgZone) {
 
-    constructor(private http: HttpClient) {
+        this.electronEventHandler = (event, arg) => {
+                this._ngZone.run(() => {
+                    const reply = `Asynchronous message reply: ${arg}`;
+                    console.log(reply);
+                });
+        };
+
+
     }
 
     ngOnInit(): void {
+        electron.ipcRenderer.on('asynchronous-reply', this.electronEventHandler);
     }
+
+    ngOnDestroy(): void {
+        electron.ipcRenderer.removeListener('asynchronous-reply', this.electronEventHandler);
+    }
+
 
     readFileTest() {
-
-        //
-        // this.http.get('./../../../assets/config.json').subscribe(
-        //     data => {
-        //         alert(JSON.stringify(data));
-        //     }
-        // )
-        // alert(JSON.stringify(configs[0]));
-
-        // const  moduleSpecifier = './config.json'
-        // import(moduleSpecifier).then((data) => {
-        //     alert(JSON.stringify(data));
-        // }).catch(error => {
-        //     alert(error.message)
-        // });
-
-        // const data = fromPromise(this.dynamicallyLoadJsonFile);
-        // alert(JSON.stringify(data));
-
-        // import('./../../../assets/config.json').then(data => {
-        //     alert(JSON.stringify(data));
-        // });
-
+       electron.ipcRenderer.send('asynchronous-message', 'ping');
     }
+
 
 
 }

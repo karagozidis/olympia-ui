@@ -40,9 +40,18 @@
 
 
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
   </head>
   <body>
+<!--  <h1>Hello World!</h1>-->
+<!--  <p>-->
+<!--      We are using node <script>document.write(process.versions.node)</script>,-->
+<!--      Chrome <script>document.write(process.versions.chrome)</script>,-->
+<!--      and Electron <script>document.write(process.versions.electron)</script>.-->
+<!--      and Electron <script>document.write(window.process.argv.slice(-3)[0])</script>.-->
+      <script>
+          var electron = require('electron');
+      </script>
+<!--  </p>-->
       <app-root>
           <div class="loader-container">
               <div class="loader"></div>

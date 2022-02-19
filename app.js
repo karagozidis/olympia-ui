@@ -2,6 +2,15 @@ const {app, BrowserWindow} = require('electron')
 const url = require("url");
 const path = require("path");
 const fs = require('fs');
+const
+    electron = require('electron'),
+    ipcMain = electron.ipcMain
+;
+
+ipcMain.on('asynchronous-message', function(event, arg) {
+  console.debug('ipc.async', arg);
+  event.sender.send('asynchronous-reply', 'async-pong');
+});
 
 let mainWindow
 
@@ -35,6 +44,7 @@ function createWindow () {
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
       additionalArguments: ["myvarvalue", "secondvarvalue", "--another=something"]
     },
     icon: path.join(__dirname, `/dist/assets/img/icons8-app-64.png`)
@@ -52,7 +62,7 @@ function createWindow () {
   );
 
   // Open the DevTools.
- // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   mainWindow.on('closed', function () {
     mainWindow = null
