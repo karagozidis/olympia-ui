@@ -1,0 +1,31 @@
+.full-page1{
+    padding-top: 60px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+.navbar.navbar-transparent {
+    background-color: #ffffff00 !important;
+    box-shadow: none;
+    border-bottom: 0px solid #ddd;
+}
+
+.header-container, .footer-container{
+    width: max-content;
+}
+
+.container2{
+    padding-top: 27vh;
+}
+
+.credits, .copyright{
+    padding-right: 0px;
+}
+
+
+.navbar .navbar-nav .nav-item:first-child {
+    margin-top: 0px;
+}
+
+.navbar.navbar-transparent .nav-item .nav-link:not(.btn) {
+    color: #dfdfdf;
+}

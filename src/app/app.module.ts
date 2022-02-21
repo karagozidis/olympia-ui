@@ -16,6 +16,7 @@ import { LoginComponent } from './shared/login/login.component';
 import { InstallationComponent } from './pages/installation/installation.component';
 import { FloorPlansComponent } from './pages/floor-plans/floor-plans.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { SettingsComponent } from './shared/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     AdminLayoutComponent,
     LoginComponent,
     InstallationComponent,
-    FloorPlansComponent
+    FloorPlansComponent,
+    SettingsComponent
   ],
   imports: [
     HttpClientModule,

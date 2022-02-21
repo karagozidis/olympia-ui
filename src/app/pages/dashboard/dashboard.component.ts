@@ -11,7 +11,7 @@ import Chart from 'chart.js';
 
 export class DashboardComponent implements OnInit{
 
-  public canvas : any;
+  public canvas: any;
   public ctx;
   public chartColor;
   public chartEmail;

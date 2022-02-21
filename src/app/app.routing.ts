@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import {LoginComponent} from './shared/login/login.component';
+import {SettingsComponent} from './shared/settings/settings.component';
 
 export const AppRoutes: Routes = [
   {
@@ -13,6 +14,10 @@ export const AppRoutes: Routes = [
   {
     path: 'pages/login',
     component: LoginComponent
+  },
+  {
+    path: 'pages/settings',
+    component: SettingsComponent
   },
   {
     path: '',
