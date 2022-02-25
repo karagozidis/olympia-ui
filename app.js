@@ -37,6 +37,9 @@ let mainWindow
 
 // fs.promises.rmdir("configdir");
 
+app.commandLine.appendSwitch('ignore-certificate-errors');
+app.commandLine.appendSwitch('allow-insecure-localhost', 'true');
+
 function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,

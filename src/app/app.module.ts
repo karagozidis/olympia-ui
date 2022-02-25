@@ -17,6 +17,7 @@ import { InstallationComponent } from './pages/installation/installation.compone
 import { FloorPlansComponent } from './pages/floor-plans/floor-plans.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SettingsComponent } from './shared/settings/settings.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,18 +28,19 @@ import { SettingsComponent } from './shared/settings/settings.component';
     FloorPlansComponent,
     SettingsComponent
   ],
-  imports: [
-    HttpClientModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot(AppRoutes,{
-      useHash: true
-    }),
-    SidebarModule,
-    NavbarModule,
-    ToastrModule.forRoot(),
-    FooterModule,
-    FixedPluginModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot(AppRoutes, {
+            useHash: true
+        }),
+        SidebarModule,
+        NavbarModule,
+        ToastrModule.forRoot(),
+        FooterModule,
+        FixedPluginModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

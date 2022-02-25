@@ -1,4 +1,6 @@
 import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {PersonService} from '../../services/crud/person.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +14,38 @@ export class LoginComponent implements OnInit, OnDestroy {
   test: Date = new Date();
   private toggleButton;
   private sidebarVisible: boolean;
-  private nativeElement: Node;
 
-  constructor(private element: ElementRef) {
-    this.nativeElement = element.nativeElement;
+  username = '';
+  password = '';
+
+  constructor(private element: ElementRef,
+              private service: PersonService,
+              private router: Router) {
     this.sidebarVisible = false;
+  }
+
+  authenticateUser(): void {
+
+    if (this.username === '') {
+     // this.notificationService.showNotification
+      // ('top', 'center', 'alert-danger', 'fa-id-card', '<b>Login Error</b> Please fill in your username');
+      alert('<b>Login Error</b> Please fill in your username');
+      return;
+    }
+
+    if (this.password === '') {
+      alert('<b>Login Error</b> Please fill in your password');
+     // this.notificationService.showNotification
+      // ('top', 'center', 'alert-danger', 'fa-id-card', '<b>Login Error</b> Please fill in your password');
+      return;
+    }
+
+    this.service.login(this.username, this.password).subscribe(
+        data => {
+          localStorage.setItem('login_data', data);
+          this.router.navigateByUrl('/dashboard');
+        }
+    );
   }
 
   ngOnInit() {
@@ -24,17 +53,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     body.classList.add('login-page');
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
-
-    // setTimeout(function() {
-    //   // after 1000 ms we add the class animated to the login/register card
-    //   $('.card').removeClass('card-hidden');
-    // }, 700)
   }
 
   ngOnDestroy() {
     const body = document.getElementsByTagName('body')[0];
     body.classList.remove('login-page');
   }
+
   sidebarToggle() {
     const toggleButton = this.toggleButton;
     const body = document.getElementsByTagName('body')[0];
