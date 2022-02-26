@@ -36,6 +36,7 @@ export class NavbarComponent implements OnInit {
           this.sidebarClose();
        });
     }
+
     getTitle() {
       let titlee = this.location.prepareExternalUrl(this.location.path());
       if (titlee.charAt(0) === '#') {
@@ -81,12 +82,15 @@ export class NavbarComponent implements OnInit {
           }
           this.sidebarVisible = true;
       };
+
       sidebarClose() {
           const html = document.getElementsByTagName('html')[0];
           const mainPanel =  <HTMLElement>document.getElementsByClassName('main-panel')[0];
           if (window.innerWidth < 991) {
             setTimeout(function() {
-              mainPanel.style.position = '';
+                if (mainPanel !== undefined && mainPanel.style !== undefined) {
+                    mainPanel.style.position = '';
+                }
             }, 500);
           }
           this.toggleButton.classList.remove('toggled');
@@ -104,11 +108,15 @@ export class NavbarComponent implements OnInit {
           navbar.classList.add('navbar-transparent');
           navbar.classList.remove('bg-white');
         }
-
       }
 
-
     setLanguage(en: string) {
-        
+    }
+
+    logout() {
+        localStorage.removeItem('login_data');
+        localStorage.removeItem('token');
+        localStorage.removeItem('refreshToken');
+        this.router.navigate(['/pages/login']);
     }
 }
