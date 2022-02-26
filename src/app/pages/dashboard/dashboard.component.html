@@ -8,17 +8,17 @@
         <div class="card-icon icon-gateway ">
           <i class="fas fa-ethernet"></i>
         </div>
-        <h2 class="card-title card-total">1</h2>
+        <h2 class="card-title card-total">{{statusProps[4]}}</h2>
         <ul>
           <li>
             <h6>
               <i class="fa fa-circle text-empty"></i>
-              Online (0)</h6>
+              Online ({{statusProps[13]}})</h6>
           </li>
           <li>
             <h6>
               <i class="fa fa-circle text-danger"></i>
-              In Fault (1)</h6>
+              In Fault ({{statusProps[5]}})</h6>
           </li>
         </ul>
       </div>
@@ -51,34 +51,34 @@
         <div class="card-icon icon-luminaire">
           <i class="fab fa-asymmetrik"></i>
         </div>
-        <h2 class="card-title card-total">6</h2>
+        <h2 class="card-title card-total">{{statusProps[0]}}</h2>
         <ul>
           <li>
-            <h6><i class="fa fa-circle text-success"></i> Online (3)</h6>
+            <h6><i class="fa fa-circle text-success"></i> Online ({{statusProps[14]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-info"></i> Cherged (2)</h6>
+            <h6><i class="fa fa-circle text-info"></i> Charged ({{statusProps[12]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-empty"></i> Lamp test (0)</h6>
+            <h6><i class="fa fa-circle text-empty"></i> Lamp test ({{statusProps[17]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-info"></i> Batt. test (1)</h6>
+            <h6><i class="fa fa-circle text-info"></i> Batt. test ({{statusProps[18]}})</h6>
           </li>
           <li>
             <h6><i class="fa fa-circle text-empty"></i>
-              In fault (0)
+              In fault ({{statusProps[1]}})
             </h6>
           </li>
           <li>
             <h6><i class="fa fa-circle text-empty"></i>
-              Emerg. oper. (0)
+              Emerg. oper. ({{statusProps[2]}})
             </h6>
           </li>
           <li>
             <h6>
               <i class="fa fa-circle text-empty"></i>
-              Forced emerg. (0)
+              Forced emerg. ({{statusProps[10]}})
             </h6>
           </li>
         </ul>
@@ -112,17 +112,17 @@
         <div class="card-icon icon-extender">
           <i class="fas fa-bezier-curve"></i>
         </div>
-        <h2 class="card-title card-total">1</h2>
+        <h2 class="card-title card-total">{{statusProps[6]}}</h2>
         <ul>
           <li>
             <h6>
               <i class="fa fa-circle text-empty"></i>
-              Online (0)</h6>
+              Online ({{statusProps[15]}})</h6>
           </li>
           <li>
             <h6>
               <i class="fa fa-circle text-danger"></i>
-              In Fault (1)</h6>
+              In Fault ({{statusProps[7]}})</h6>
           </li>
         </ul>
       </div>
@@ -155,23 +155,23 @@
         <div class="card-icon icon-wireless-io">
           <i class="fas fa-wifi"></i>
         </div>
-        <h2 class="card-title card-total">8</h2>
+        <h2 class="card-title card-total">{{statusProps[8]}}</h2>
         <ul>
           <li>
             <h6> <i class="fa fa-circle text-success"></i>
-              Online (7)</h6>
+              Online ({{statusProps[16]}})</h6>
           </li>
           <li>
             <h6><i class="fa fa-circle text-danger"></i>
-              In Fault (1)</h6>
+              In Fault ({{statusProps[9]}})</h6>
           </li>
           <li>
             <h6><i class="fa fa-circle text-empty"></i>
-              Input 1 detected (0)</h6>
+              Input 1 detected ({{statusProps[11]}})</h6>
           </li>
           <li>
             <h6><i class="fa fa-circle text-empty"></i>
-              Input 2 detected (0)</h6>
+              Input 2 detected ({{statusProps[20]}})</h6>
           </li>
         </ul>
       </div>
@@ -274,5 +274,4 @@
       </div>
     </div>
   </div>
-
 </div>
