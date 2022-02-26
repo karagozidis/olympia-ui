@@ -15,9 +15,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './shared/login/login.component';
 import { InstallationComponent } from './pages/installation/installation.component';
 import { FloorPlansComponent } from './pages/floor-plans/floor-plans.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { SettingsComponent } from './shared/settings/settings.component';
 import {FormsModule} from '@angular/forms';
+import {AuthenticationHeaderInterceptor} from './interceptors/authentication-header.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import {FormsModule} from '@angular/forms';
         FixedPluginModule,
         FormsModule
     ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthenticationHeaderInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
