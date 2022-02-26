@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   private toggleButton;
   private sidebarVisible: boolean;
 
-  username = '';
-  password = '';
+  username = 'admin';
+  password = 'adminadmin';
 
   constructor(private element: ElementRef,
               private service: PersonService,
@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.username === '') {
      // this.notificationService.showNotification
       // ('top', 'center', 'alert-danger', 'fa-id-card', '<b>Login Error</b> Please fill in your username');
-      alert('<b>Login Error</b> Please fill in your username');
+      alert('Login Error. Please fill in your username');
       return;
     }
 
     if (this.password === '') {
-      alert('<b>Login Error</b> Please fill in your password');
+      alert('Login Error. Please fill in your password');
      // this.notificationService.showNotification
       // ('top', 'center', 'alert-danger', 'fa-id-card', '<b>Login Error</b> Please fill in your password');
       return;
@@ -43,7 +43,18 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.service.login(this.username, this.password).subscribe(
         data => {
           localStorage.setItem('login_data', data);
+          localStorage.setItem('token', data['token']);
+          localStorage.setItem('refreshToken', data['refreshToken']);
           this.router.navigateByUrl('/dashboard');
+        },
+        err => {
+          if ( err.status === 401) {
+            alert('Login Error. Wrong Username or Password.');
+          }
+
+          if ( err.status === 408) {
+            alert('Login Error. Cannot find Server.');
+          }
         }
     );
   }
