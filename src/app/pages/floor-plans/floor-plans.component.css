@@ -6,3 +6,9 @@
     padding: 4px 7px;
     vertical-align: middle;
 }
+
+.img-div{
+    height: 200px;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+}
