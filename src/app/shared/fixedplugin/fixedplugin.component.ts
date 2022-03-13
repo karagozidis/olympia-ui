@@ -6,12 +6,18 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'fixedplugin.component.html'
 })
 
-export class FixedPluginComponent implements OnInit{
+export class FixedPluginComponent implements OnInit {
 
   public sidebarColor: string = "white";
   public sidebarActiveColor: string = "danger";
 
   public state: boolean = true;
+
+    ngOnInit(){
+       const data = localStorage.getItem('app_config');
+       const appConfig = JSON.parse(data);
+       this.changeSidebarColor(appConfig.theme);
+    }
 
   changeSidebarColor(color){
     var sidebar = <HTMLElement>document.querySelector('.sidebar');
@@ -21,6 +27,7 @@ export class FixedPluginComponent implements OnInit{
         sidebar.setAttribute('data-color',color);
     }
   }
+
   changeSidebarActiveColor(color){
     var sidebar = <HTMLElement>document.querySelector('.sidebar');
     this.sidebarActiveColor = color;
@@ -28,5 +35,5 @@ export class FixedPluginComponent implements OnInit{
         sidebar.setAttribute('data-active-color',color);
     }
   }
-  ngOnInit(){}
+
 }
