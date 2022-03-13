@@ -15,10 +15,10 @@ export class FloorPlanService extends CrudService<any>  {
   }
 
   public getList(): Observable<any> {
-    return this.http.get<any>(`${environment.serverUrl}/${this.endpoint}`);
+    return this.http.get<any>(`${localStorage.getItem('server_url')}/${this.endpoint}`);
   }
 
   public getFullObjs(): Observable<FloorPlanEntry[]> {
-    return this.http.get<any>(`${environment.serverUrl}/${this.endpoint}/GetFullObjs`);
+    return this.http.get<any>(`${localStorage.getItem('server_url')}/${this.endpoint}/GetFullObjs`);
   }
 }

@@ -12,11 +12,14 @@
         </div>
         <div class="pull-right">
             <div class="col-12 tool-buttons" style="padding-top: 15px;">
-                <button style="margin-top: 0px;" class="btn btn-danger"><i class="fa fa-times"></i> Delete Plan </button>
-                <button style="margin-top: 0px;" class="btn btn-success"><i class="fa fa-plus-circle"></i> New Plan </button>
-                <button style="margin-top: 0px;" class="btn btn-info"><i class="fa fa-solid fa-pen-ruler"></i> Edit Plan </button>
-                <button style="margin-top: 0px;" class="btn btn-default"><i class="fa-solid fa-print"></i> Print </button>
-                <button style="margin-top: 0px;" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add Device </button>
+                <button style="margin-top: 0px;" class="btn btn-default" (click)="print()"><i class="fa-solid fa-print"></i> Print </button>
+                <button style="margin-top: 0px;background-color: #518ece;" class="btn btn-default" (click)="addGateway()"><i class="fas fa-ethernet"></i> Add Gateway </button>
+                <button style="margin-top: 0px;background-color: #4e9147;" class="btn btn-default" (click)="addLuminaire()" ><i class="fab fa-asymmetrik"></i> Add Luminaire </button>
+                <button style="margin-top: 0px;background-color: #b26fb3;" class="btn btn-default" (click)="addExtender()">
+                    <i class="fas fa-bezier-curve"></i> Add Extender </button>
+                <button style="margin-top: 0px;background-color: #585fb9;" class="btn btn-default" (click)="addWirelessIo()">
+                    <i class="fas fa-wifi"></i> Add Wireless Io
+                </button>
             </div>
         </div>
     </div>
@@ -71,10 +74,64 @@
             </div>
             </div>
 
+
+            <div class="col-10 ">
+
+
+                <div #parentGraphContainer class="graph-container overflow-auto">
+                    <div #nodeGraphContainer class="central-area"
+                         style="position:relative;flex: 0 0 100%;max-width: 100%;min-height: calc(100vh - 167px);">
+
+                        <ng-container *ngIf="this.curFloorPlanEntry != null ">
+                                                <img *ngIf=" this.curFloorPlanEntry.backimage != null && this.curFloorPlanEntry.backimage != '' " style="max-width: fit-content;" [src]="trustImageResource(this.curFloorPlanEntry.backimage)">
+                                                <img *ngIf=" this.curFloorPlanEntry.backimage == null || this.curFloorPlanEntry.backimage == ''" src="./assets/img/no_image.png" width="200">
+                        </ng-container>
+
+                        <div class="card card-design card-stats {{node.cssClass}}"
+                             *ngFor="let node of devices" style="{{node.cssPosition}}{{node.color}}"
+                             draggable="true"
+                             (dragstart)="onDragStart($event,node)"
+                             (dragend)="onDragEnd($event)">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="pull-left">
+                                            <div class="card-icon">
+                                                <i class="{{node.icon}}"></i>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right">
+                                            <div class="numbers">
+                                                <p class="card-category">{{node.code}}</p>
+                                                <p class="card-title">{{node.name}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <hr>
+                                <div class="stats">
+                                    <i class="fa fa-pencil-alt"
+                                       style="color: #0064cf"></i>
+                                    <i class="fas fa-times"
+                                       (click)="removeDevice(node)"
+                                       data-target="#rUSureModal"
+                                       data-toggle="modal"
+                                       style="color: #cf0000"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-10">
                 <div class="card card-plain">
-                    <div class="card-content" *ngIf="this.curFloorPlanEntry != null;">
-                        <img [src]="trustImageResource(this.curFloorPlanEntry.backimage)">
+                    <div class="card-content" *ngIf="this.curFloorPlanEntry != null">
+
                     </div>
                 </div>
             </div>
@@ -123,53 +180,6 @@
                     <i class="fa fa-save"></i>
                     Save
                 </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="noticeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-notice">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    <i class="nc-icon nc-simple-remove"></i>
-                </button>
-                <h5 class="modal-title" id="myModalLabel">How Do You Become an Affiliate?</h5>
-            </div>
-            <div class="modal-body">
-                <div class="instruction">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <strong>1. Register</strong>
-                            <p class="description">The first step is to create an account at
-                                <a href="https://www.creative-tim.com/">Creative Tim</a>. You can choose a social network or go for the classic version, whatever works best for you.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="picture">
-                                <img src="./assets/img/bg/daniel-olahs.jpg" alt="Thumbnail Image" class="rounded img-raised">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="instruction">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <strong>2. Apply</strong>
-                            <p class="description">The first step is to create an account at
-                                <a href="https://www.creative-tim.com/">Creative Tim</a>. You can choose a social network or go for the classic version, whatever works best for you.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="picture">
-                                <img src="./assets/img/bg/david-marcu.jpg" alt="Thumbnail Image" class="rounded img-raised">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p>If you have more questions, don't hesitate to contact us or send us a tweet @creativetim. We're here to help!</p>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-info btn-round" data-dismiss="modal">Sounds good!</button>
             </div>
         </div>
     </div>
