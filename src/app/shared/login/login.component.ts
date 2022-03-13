@@ -1,6 +1,8 @@
-import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {PersonService} from '../../services/crud/person.service';
 import {Router} from '@angular/router';
+
+declare var electron: any;
 
 @Component({
   selector: 'app-login',
@@ -11,21 +13,41 @@ export class LoginComponent implements OnInit, OnDestroy {
   focus;
   focus1;
   focus2;
-  test: Date = new Date();
+  currentDate: Date = new Date();
   private toggleButton;
   private sidebarVisible: boolean;
 
   username = 'admin';
   password = 'adminadmin';
+  appConfigResponceEventHandler;
 
   constructor(private element: ElementRef,
               private service: PersonService,
-              private router: Router) {
+              private router: Router,
+              private _ngZone: NgZone) {
     this.sidebarVisible = false;
+    this.appConfigResponceEventHandler = (event, appConfig) => {
+      this._ngZone.run(() => {
+     //   this.appConfig = appConfig;
+        localStorage.setItem('app_config', JSON.stringify(appConfig));
+        localStorage.setItem('server_url', appConfig.serverUrl);
+     //   this.changeSidebarColor(appConfig.theme);
+      });
+    };
   }
 
-  authenticateUser(): void {
+//   changeSidebarColor(color) {
+//     const sidebar = <HTMLElement>document.querySelector('.sidebar');
+// console.log('sidebar 1');
+//
+//     // this.sidebarColor = color;
+//     if (sidebar != undefined) {
+//       sidebar.setAttribute('data-color', color);
+//       console.log('sidebar 2');
+//     }
+//   }
 
+  authenticateUser(): void {
     if (this.username === '') {
      // this.notificationService.showNotification
       // ('top', 'center', 'alert-danger', 'fa-id-card', '<b>Login Error</b> Please fill in your username');
@@ -64,6 +86,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     body.classList.add('login-page');
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
+
+    electron.ipcRenderer.on('app-config-response', this.appConfigResponceEventHandler);
+    electron.ipcRenderer.send('app-config-request', 'appConfig');
   }
 
   ngOnDestroy() {
