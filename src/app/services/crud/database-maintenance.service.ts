@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
 import {CrudService} from './common/crud.service';
 
 @Injectable({
@@ -13,7 +12,7 @@ export class DatabaseMaintenanceService extends CrudService<any> {
   }
 
   public getAllStatusPropsForMasterPanel(): Observable<any> {
-    return this.http.get<any>(`${environment.serverUrl}/${this.endpoint}/GetAllStatusProps/1`);
+    return this.http.get<any>(`${localStorage.getItem('server_url')}/${this.endpoint}/GetAllStatusProps/1`);
   }
 
 }

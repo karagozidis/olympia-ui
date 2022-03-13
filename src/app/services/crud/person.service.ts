@@ -18,7 +18,8 @@ export class PersonService extends CrudService<any> {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.http.post(environment.serverUrl + '/' + this.endpoint + '/Login', {
+    // return this.http.post(localStorage.getItem('server_url') + '/' + this.endpoint + '/Login', {
+    return this.http.post(`${localStorage.getItem('server_url')}/${this.endpoint}/Login`, {
       'userName': username,
       'password': password
     }, httpOptions);
