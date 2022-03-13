@@ -20,48 +20,59 @@
 
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-12 col-lg-4">
-                    <div class="card ">
+                    <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">
                                 <i class="fa-solid fa-screwdriver-wrench"></i> General Settings
                             </h4>
                         </div>
                         <div class="card-body">
-                            <form method="#" action="#">
+                            <div method="#" action="#">
                                 <label>Backend Ip:Port</label>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="0.0.0.0:0000">
+                                    <input type="text" class="form-control" [(ngModel)]="appConfig.serverUrl" placeholder="0.0.0.0:0000">
                                 </div>
                                 <label>Theme</label>
-
                                     <div class="input-group input-group-alternative" style="cursor: pointer">
                                         <div class="input-group-prepend white-field">
                                             <span class="input-group-text white-field">
                                                 <i class="fa fa-angle-down" style="opacity: 0.8;"></i>
                                             </span>
                                         </div>
-                                        <select  style="cursor: pointer" class="form-control ng-pristine ng-valid ng-touched">
-                                            <option  value="dark">Dark</option>
+                                        <select [(ngModel)]="appConfig.theme"  style="cursor: pointer" class="form-control ng-pristine ng-valid ng-touched">
+                                            <option  value="black">Black</option>
                                             <option value="white">White</option>
-                                            <option value="orange">Orange</option>
+                                            <option value="#ef8157">Orange</option>
                                         </select>
                                     </div>
-                                <div class="form-check mt-3">
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" value=""> Demo Checkbox
-                                            <span class="form-check-sign"></span>
-                                        </label>
+                                <label>Language</label>
+                                <div class="input-group input-group-alternative" style="cursor: pointer">
+                                    <div class="input-group-prepend white-field">
+                                            <span class="input-group-text white-field">
+                                                <i class="fa fa-angle-down" style="opacity: 0.8;"></i>
+                                            </span>
                                     </div>
+                                    <select [(ngModel)]="appConfig.language" style="cursor: pointer" class="form-control ng-pristine ng-valid ng-touched">
+                                        <option  value="en">ENGLISH</option>
+                                        <option value="gr">ΕΛΛΗΝΙΚΑ</option>
+                                        <option value="no">NORSK</option>
+                                        <option value="se">SVENSK</option>
+                                        <option value="de">DEUTSCHE</option>
+                                    </select>
                                 </div>
-                            </form>
+
+
+                            </div>
                         </div>
                         <div class="card-footer" style="padding-top: 0px;">
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="pull-right">
-                                        <button title="Save" style="margin-right: 10px;" class="btn btn-outline-primary btn-round">
+                                        <button (click)="save()"
+                                                title="Save"
+                                                style="margin-right: 10px;"
+                                                class="btn btn-outline-primary btn-round">
                                             <i class="fa fa-save"></i> Save
                                         </button>
                                     </div>
@@ -70,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-lg-4">
+                <div style="filter: blur(1px);" class="col-12 col-sm-12 col-lg-4">
                     <div class="card ">
                         <div class="card-header">
                             <h4 class="card-title"><i class="fa-solid fa-hard-drive"></i> Device Settings</h4>
@@ -111,7 +122,7 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-12 col-sm-12 col-lg-6">
+                <div style="filter: blur(1px);" class="col-12 col-sm-12 col-lg-6">
                     <div class="card ">
                         <div class="card-header">
                             <h4 class="card-title">
@@ -162,7 +173,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-lg-2">
+                <div style="filter: blur(1px);" class="col-12 col-sm-12 col-lg-2">
                     <div class="card ">
                         <div class="card-header">
                             <h4 class="card-title"><i class="fa-solid fa-rocket"></i> Demo</h4>

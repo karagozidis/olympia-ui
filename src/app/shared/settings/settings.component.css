@@ -21,11 +21,17 @@
     padding-right: 0px;
 }
 
-
 .navbar .navbar-nav .nav-item:first-child {
     margin-top: 0px;
 }
 
 .navbar.navbar-transparent .nav-item .nav-link:not(.btn) {
     color: #dfdfdf;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
