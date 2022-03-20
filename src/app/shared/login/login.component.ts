@@ -36,17 +36,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     };
   }
 
-//   changeSidebarColor(color) {
-//     const sidebar = <HTMLElement>document.querySelector('.sidebar');
-// console.log('sidebar 1');
-//
-//     // this.sidebarColor = color;
-//     if (sidebar != undefined) {
-//       sidebar.setAttribute('data-color', color);
-//       console.log('sidebar 2');
-//     }
-//   }
-
   authenticateUser(): void {
     if (this.username === '') {
      // this.notificationService.showNotification
