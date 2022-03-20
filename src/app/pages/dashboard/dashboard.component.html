@@ -12,12 +12,12 @@
         <ul>
           <li>
             <h6>
-              <i class="fa fa-circle text-empty"></i>
+              <i class="fa fa-circle text-empty" [ngClass]="{'text-success':(statusProps[13] > 0), 'text-empty': !(statusProps[13] > 0) }"></i>
               Online ({{statusProps[13]}})</h6>
           </li>
           <li>
             <h6>
-              <i class="fa fa-circle text-danger"></i>
+              <i class="fa fa-circle text-danger"  [ngClass]="{'text-danger':(statusProps[5] > 0), 'text-empty': !(statusProps[5] > 0) }"></i>
               In Fault ({{statusProps[5]}})</h6>
           </li>
         </ul>
@@ -54,30 +54,35 @@
         <h2 class="card-title card-total">{{statusProps[0]}}</h2>
         <ul>
           <li>
-            <h6><i class="fa fa-circle text-success"></i> Online ({{statusProps[14]}})</h6>
+            <h6>
+              <i class="fa fa-circle" [ngClass]="{'text-success':(statusProps[14] > 0), 'text-empty': !(statusProps[14] > 0) }"></i>
+              Online ({{statusProps[14]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-info"></i> Charged ({{statusProps[12]}})</h6>
+            <h6><i class="fa fa-circle" [ngClass]="{'text-info':(statusProps[12] > 0), 'text-empty': !(statusProps[12] > 0) }" ></i>
+              Charged ({{statusProps[12]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-empty"></i> Lamp test ({{statusProps[17]}})</h6>
+            <h6><i class="fa fa-circle" [ngClass]="{'text-info':(statusProps[17] > 0), 'text-empty': !(statusProps[17] > 0) }" ></i>
+              Lamp test ({{statusProps[17]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-info"></i> Batt. test ({{statusProps[18]}})</h6>
+            <h6><i class="fa fa-circle"  [ngClass]="{'text-info':(statusProps[18] > 0), 'text-empty': !(statusProps[18] > 0) }" ></i>
+              Batt. test ({{statusProps[18]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-empty"></i>
+            <h6><i class="fa fa-circle" [ngClass]="{'text-danger':(statusProps[1] > 0), 'text-empty': !(statusProps[1] > 0) }" ></i>
               In fault ({{statusProps[1]}})
             </h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-empty"></i>
+            <h6><i class="fa fa-circle" [ngClass]="{'text-danger':(statusProps[2] > 0), 'text-empty': !(statusProps[2] > 0) }" ></i>
               Emerg. oper. ({{statusProps[2]}})
             </h6>
           </li>
           <li>
             <h6>
-              <i class="fa fa-circle text-empty"></i>
+              <i class="fa fa-circle " [ngClass]="{'text-danger':(statusProps[10] > 0), 'text-empty': !(statusProps[10] > 0) }"></i>
               Forced emerg. ({{statusProps[10]}})
             </h6>
           </li>
@@ -116,12 +121,12 @@
         <ul>
           <li>
             <h6>
-              <i class="fa fa-circle text-empty"></i>
+              <i class="fa fa-circle" [ngClass]="{'text-success':(statusProps[15] > 0), 'text-empty': !(statusProps[15] > 0) }"></i>
               Online ({{statusProps[15]}})</h6>
           </li>
           <li>
             <h6>
-              <i class="fa fa-circle text-danger"></i>
+              <i class="fa fa-circle" [ngClass]="{'text-danger':(statusProps[7] > 0), 'text-empty': !(statusProps[7] > 0) }"></i>
               In Fault ({{statusProps[7]}})</h6>
           </li>
         </ul>
@@ -158,19 +163,19 @@
         <h2 class="card-title card-total">{{statusProps[8]}}</h2>
         <ul>
           <li>
-            <h6> <i class="fa fa-circle text-success"></i>
+            <h6> <i class="fa fa-circle" [ngClass]="{'text-success':(statusProps[16] > 0), 'text-empty': !(statusProps[16] > 0) }"></i>
               Online ({{statusProps[16]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-danger"></i>
+            <h6><i class="fa fa-circle" [ngClass]="{'text-danger':(statusProps[9] > 0), 'text-empty': !(statusProps[9] > 0) }"></i>
               In Fault ({{statusProps[9]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-empty"></i>
+            <h6><i class="fa fa-circle" [ngClass]="{'text-info':(statusProps[11] > 0), 'text-empty': !(statusProps[11] > 0) }"></i>
               Input 1 detected ({{statusProps[11]}})</h6>
           </li>
           <li>
-            <h6><i class="fa fa-circle text-empty"></i>
+            <h6><i class="fa fa-circle"  [ngClass]="{'text-info':(statusProps[20] > 0), 'text-empty': !(statusProps[20] > 0) }"></i>
               Input 2 detected ({{statusProps[20]}})</h6>
           </li>
         </ul>
