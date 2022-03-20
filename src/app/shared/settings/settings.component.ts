@@ -1,5 +1,6 @@
 import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {AppConfig} from '../../dtos/app_config/app-config';
+import {Router} from '@angular/router';
 
 declare var electron: any;
 
@@ -12,7 +13,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
   appConfigResponceEventHandler;
   appConfig: AppConfig = new AppConfig();
 
-  constructor(private _ngZone: NgZone) {
+  constructor(private _ngZone: NgZone,
+              private router: Router) {
     this.appConfigResponceEventHandler = (event, appConfig) => {
       this._ngZone.run(() => {
         this.appConfig = appConfig;
@@ -31,7 +33,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   save() {
-    console.log(this.appConfig);
     electron.ipcRenderer.send('app-config-update', this.appConfig);
+    this.router.navigateByUrl('/');
   }
 }

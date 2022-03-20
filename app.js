@@ -13,23 +13,10 @@ ipcMain.on('asynchronous-message', function(event, arg) {
 });
 
 electron.ipcMain.on('app-config-request', function(event, arg) {
-    try {
-        const data = fs.readFileSync('app_config.json');
-        const appConfig =  JSON.parse(data);
-        console.log('Input Config json format Corrent');
-        console.log(appConfig);
-        event.sender.send('app-config-response', appConfig);
-    } catch (error) {
-        let appConfig = {
-            serverUrl : 'https://localhost:8096',
-            theme : 'white',
-            language : 'greek'
-        };
-        console.error(`Got an error trying to read the file: ${error.message}`);
-        console.error(appConfig);
-        event.sender.send('app-config-response', appConfig);
-    }
+    const appConfig =  readAppConfig();
+    event.sender.send('app-config-response', appConfig);
 });
+
 
 electron.ipcMain.on('app-config-update', function(event, appConfig) {
     try {
@@ -46,6 +33,26 @@ let mainWindow
 
 app.commandLine.appendSwitch('ignore-certificate-errors');
 app.commandLine.appendSwitch('allow-insecure-localhost', 'true');
+
+function readAppConfig() {
+    try {
+        const data = fs.readFileSync('app_config.json');
+        const appConfig =  JSON.parse(data);
+        console.log('Input Config json format Corrent');
+        console.log(appConfig);
+       return appConfig;
+    } catch (error) {
+        let appConfig = {
+            serverUrl : 'https://localhost:8096',
+            theme : 'white',
+            language : 'en',
+            mode : 'production'
+        };
+        console.error(`Got an error trying to read the file: ${error.message}`);
+        console.error(appConfig);
+        return appConfig;
+    }
+}
 
 function createWindow () {
   mainWindow = new BrowserWindow({
@@ -70,8 +77,10 @@ function createWindow () {
       })
   );
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+    const appConfig = readAppConfig();
+    if(appConfig.mode == 'debug'){
+        mainWindow.webContents.openDevTools();
+    }
 
   mainWindow.on('closed', function () {
     mainWindow = null

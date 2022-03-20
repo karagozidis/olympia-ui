@@ -60,6 +60,18 @@
                                         <option value="de">DEUTSCHE</option>
                                     </select>
                                 </div>
+                                <label>Mode</label>
+                                <div class="input-group input-group-alternative" style="cursor: pointer">
+                                    <div class="input-group-prepend white-field">
+                                            <span class="input-group-text white-field">
+                                                <i class="fa fa-angle-down" style="opacity: 0.8;"></i>
+                                            </span>
+                                    </div>
+                                    <select [(ngModel)]="appConfig.mode" style="cursor: pointer" class="form-control ng-pristine ng-valid ng-touched">
+                                        <option  value="production">Production</option>
+                                        <option value="debug">Debug</option>
+                                    </select>
+                                </div>
 
 
                             </div>
