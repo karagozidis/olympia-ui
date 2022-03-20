@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FloorPlanService} from '../../services/crud/floor-plan.service';
 import {FloorPlanEntry} from '../../dtos/floor_plan/floor-plan-entry';
 import {DomSanitizer} from '@angular/platform-browser';
-import {PersonService} from '../../services/crud/person.service';
+import html2canvas from 'html2canvas';
 
 class Node {
     id;
@@ -48,6 +48,12 @@ export class FloorPlansComponent implements OnInit {
     startDragEvent: DragEvent = null;
     startDragNode = null;
 
+    @ViewChild('screen') screen: ElementRef;
+    @ViewChild('canvas') canvas: ElementRef;
+    @ViewChild('downloadLink') downloadLink: ElementRef;
+
+    @ViewChild('canvas2') canvas2: ElementRef;
+
     constructor(private service: FloorPlanService,
                 private sanitizer: DomSanitizer) {
     }
@@ -64,6 +70,15 @@ export class FloorPlansComponent implements OnInit {
             if (this.floorPlanEntries.length > 0) {
                 this.curFloorPlanEntry = this.floorPlanEntries[0];
             }
+        });
+    }
+
+    downloadImage() {
+        html2canvas(this.screen.nativeElement).then(canvas => {
+            this.canvas.nativeElement.src = canvas.toDataURL();
+            this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
+            this.downloadLink.nativeElement.download = 'marble-diagram.png';
+            this.downloadLink.nativeElement.click();
         });
     }
 
@@ -214,6 +229,36 @@ export class FloorPlansComponent implements OnInit {
     }
 
     print() {
-        window.print();
+        console.log(this.screen);
+        html2canvas(this.screen.nativeElement).then(canvas => {
+
+            this.canvas.nativeElement.src = canvas.toDataURL();
+            this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
+            this.downloadLink.nativeElement.download = 'marble-diagram.png';
+            this.downloadLink.nativeElement.click();
+        });
+        // const element = document.createElement('a');
+        // const myJSON = 'Helloooooo!!';
+        // element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(myJSON));
+        // element.setAttribute('download', 'rmt.json');
+        // element.style.display = 'none';
+        // document.body.appendChild(element);
+        // element.click();
+        // document.body.removeChild(element);
+
+        // window.print();
     }
+
+    // print() {
+    //         const ctx = this.canvas2.nativeElement.getContext('2d');
+    //         const image = new Image();
+    //         image.onload = function() {
+    //             ctx.drawImage(image, 0, 0);
+    //         };
+    //         image.src = 'data:image/png;base64,' + this.curFloorPlanEntry.backimage;
+    //         this.downloadLink.nativeElement.href = this.canvas2.nativeElement.toDataURL('image/png');
+    //         this.downloadLink.nativeElement.download = 'diagram.png';
+    //         this.downloadLink.nativeElement.click();
+    // }
+
 }

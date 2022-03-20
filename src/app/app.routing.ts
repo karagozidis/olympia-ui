@@ -8,6 +8,7 @@ export const AppRoutes: Routes = [
   {
     path: '',
     // component: LoginComponent
+    // redirectTo: 'floor-plans',
     redirectTo: 'pages/login',
     pathMatch: 'full',
   },

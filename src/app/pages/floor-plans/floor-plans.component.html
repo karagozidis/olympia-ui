@@ -78,8 +78,9 @@
             <div class="col-10 ">
 
 
-                <div #parentGraphContainer class="graph-container overflow-auto">
-                    <div #nodeGraphContainer class="central-area"
+                <div #screen class="graph-container overflow-auto">
+
+                    <div class="central-area"
                          style="position:relative;flex: 0 0 100%;max-width: 100%;min-height: calc(100vh - 167px);">
 
                         <ng-container *ngIf="this.curFloorPlanEntry != null ">
@@ -184,3 +185,11 @@
         </div>
     </div>
 </div>
+
+<div id="download">
+    <div #canvas></div>
+    <a #downloadLink></a>
+</div>
+
+<canvas #canvas2>
+</canvas>
