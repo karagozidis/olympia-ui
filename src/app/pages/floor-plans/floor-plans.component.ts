@@ -82,44 +82,6 @@ export class FloorPlansComponent implements OnInit {
         });
     }
 
-    // constructor(private service: FloorPlanService,
-    //             private pservice: PersonService,
-    //             private sanitizer: DomSanitizer) {
-    //
-    //     const appConfig = [];
-    //     appConfig['serverUrl'] = 'https://192.168.1.109:8096/api';
-    //     appConfig['theme'] = '#ef8157';
-    //     appConfig['language'] = 'de';
-    //
-    //     localStorage.setItem('app_config', JSON.stringify(appConfig));
-    //     localStorage.setItem('server_url', 'https://192.168.1.109:8096/api');
-    //
-    // }
-    //
-    // ngOnInit(): void {
-    //
-    //     document.addEventListener('dragover', function( event ) {
-    //         event.preventDefault();
-    //     }, false);
-    //
-    //     this.pservice.login('admin', 'adminadmin').subscribe(
-    //         pdata => {
-    //
-    //             localStorage.setItem('login_data', pdata);
-    //             localStorage.setItem('login_data', pdata);
-    //             localStorage.setItem('token', pdata['token']);
-    //             localStorage.setItem('refreshToken', pdata['refreshToken']);
-    //
-    //             this.service.getFullObjs().subscribe(data => {
-    //                 this.floorPlanEntries = data;
-    //                 console.log(this.floorPlanEntries);
-    //                 if (this.floorPlanEntries.length > 0) {
-    //                     this.curFloorPlanEntry = this.floorPlanEntries[0];
-    //                 }
-    //             });
-    //         });
-    // }
-
     onSelectFile(event) {
         if (event.target.files && event.target.files[0]) {
             const reader = new FileReader();
@@ -229,14 +191,14 @@ export class FloorPlansComponent implements OnInit {
     }
 
     print() {
-        console.log(this.screen);
-        html2canvas(this.screen.nativeElement).then(canvas => {
-
-            this.canvas.nativeElement.src = canvas.toDataURL();
-            this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
-            this.downloadLink.nativeElement.download = 'marble-diagram.png';
-            this.downloadLink.nativeElement.click();
-        });
+        // console.log(this.screen);
+        // html2canvas(this.screen.nativeElement).then(canvas => {
+        //
+        //     this.canvas.nativeElement.src = canvas.toDataURL();
+        //     this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
+        //     this.downloadLink.nativeElement.download = 'marble-diagram.png';
+        //     this.downloadLink.nativeElement.click();
+        // });
         // const element = document.createElement('a');
         // const myJSON = 'Helloooooo!!';
         // element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(myJSON));
