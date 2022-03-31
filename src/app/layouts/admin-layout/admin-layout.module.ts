@@ -15,18 +15,13 @@ import { NotificationsComponent } from '../../pages/notifications/notifications.
 import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {NgProgressModule} from 'ngx-progressbar';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
-    NgbModule,
-    NgProgressModule.withConfig({
-      spinnerPosition: 'left',
-      color: '#f71cff'
-    }),
+    NgbModule
   ],
   declarations: [
     DashboardComponent,

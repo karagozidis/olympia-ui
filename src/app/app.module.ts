@@ -1,7 +1,7 @@
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ToastrModule } from "ngx-toastr";
+import { ToastrModule } from 'ngx-toastr';
 
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
@@ -20,6 +20,15 @@ import { SettingsComponent } from './shared/settings/settings.component';
 import {FormsModule} from '@angular/forms';
 import {AuthenticationHeaderInterceptor} from './interceptors/authentication-header.interceptor';
 
+import {HttpRequestLoadingInterceptor} from './interceptors/http-request-loading.interceptor';
+import { RecordedEventsComponent } from './pages/recorded-events/recorded-events.component';
+import { DatePipe } from '@angular/common';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CurrentEventsComponent } from './pages/current-events/current-events.component';
+import { DatePickerComponent } from './form-controls/date-picker/date-picker.component';
+import {NgxMaskModule} from 'ngx-mask';
+import { WirelessDevicesComponent } from './pages/wireless-devices/wireless-devices.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +36,11 @@ import {AuthenticationHeaderInterceptor} from './interceptors/authentication-hea
     LoginComponent,
     InstallationComponent,
     FloorPlansComponent,
-    SettingsComponent
+    SettingsComponent,
+    RecordedEventsComponent,
+    CurrentEventsComponent,
+    DatePickerComponent,
+    WirelessDevicesComponent
   ],
     imports: [
         HttpClientModule,
@@ -40,9 +53,17 @@ import {AuthenticationHeaderInterceptor} from './interceptors/authentication-hea
         ToastrModule.forRoot(),
         FooterModule,
         FixedPluginModule,
-        FormsModule
+        FormsModule,
+        NgbModule,
+        NgxMaskModule.forRoot()
     ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthenticationHeaderInterceptor, multi: true}],
+  providers: [
+      DatePipe,
+      {provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationHeaderInterceptor,
+      multi: true},
+      {provide: HTTP_INTERCEPTORS, useClass: AuthenticationHeaderInterceptor, multi: true},
+      {provide: HTTP_INTERCEPTORS, useClass: HttpRequestLoadingInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

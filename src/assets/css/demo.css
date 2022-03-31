@@ -204,3 +204,7 @@
   outline: none;
   display: none;
 }
+
+.progress-bar {
+  background-color: #ac2228 !important;
+}
