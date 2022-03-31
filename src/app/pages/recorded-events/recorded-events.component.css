@@ -1,0 +1,26 @@
+.td-action{
+    /*max-width: fit-content;*/
+    width: 70px;
+}
+.td-action button{
+    margin-left: 2px;
+}
+
+.table-headers{
+    cursor: pointer;
+}
+
+.modal-dialog {
+    max-width: 1500px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.selectpicker{
+    padding: 6px;
+    width: 100%;
+}
+
+.card-no-shadow{
+    box-shadow: none;
+}
