@@ -143,11 +143,17 @@
   padding-top: 2px;
 }
 
+.navbar-hidden-border {
+  border-bottom: 1px solid #ddd0;
+}
+
+
 .progress {
-  height: 3px;
+  height: 7px;
   position: absolute;
   width: 100%;
-  border-radius: 0px;
+  //border-radius: 0px;
+  //background-color: #ac2228;
   top: 63px;
 }
 
@@ -155,13 +161,25 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #309bdb;
+  background-color: #ac2228 !important;
   transition: width 0.1s ease;
 }
 
 .navbar-hidden-border {
   border-bottom: 1px solid #ddd0;
+}
+
+.search-field{
+  min-width: 200px;
+}
+
+.search-field .input-group .form-control{
+  min-width: 200px;
+  transition: min-width 2s;
+}
+
+.search-field .input-group .form-control:focus {
+  min-width: 350px;
 }

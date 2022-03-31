@@ -1,3 +1,5 @@
+<ngb-progressbar [value]="progressBarPercentage"></ngb-progressbar>
+
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
   <div class="container-fluid">
     <div class="navbar-wrapper">
@@ -23,16 +25,21 @@
       <span class="navbar-toggler-bar navbar-kebab"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="collapseExample" [ngbCollapse]="isCollapsed">
-      <form>
+      <div class="search-field">
         <div class="input-group no-border">
-          <input type="text" value="" class="form-control" placeholder="Search...">
+          <input type="text"
+                 value=""
+                 #searchControl
+                 (keydown)="searchKeyDown($event, searchControl.value)"
+                 class="form-control"
+                 placeholder="Search...">
           <div class="input-group-append">
             <div class="input-group-text">
               <i class="nc-icon nc-zoom-split"></i>
             </div>
           </div>
         </div>
-      </form>
+      </div>
       <ul class="navbar-nav">
 
         <li style="cursor: pointer;"
