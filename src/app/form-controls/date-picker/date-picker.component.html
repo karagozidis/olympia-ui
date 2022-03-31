@@ -1,0 +1,72 @@
+<table>
+    <tr>
+        <td>
+            <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                    <span (click)="ngbDatepickerIdentifier.toggle()" class="input-group-text"><i class="fa fa-calendar"
+                                                                                                 style="color: #0081f1;"></i></span>
+                </div>
+                <input
+                        style="visibility: hidden;width: 0px;margin: -4px;"
+                        ngbDatepicker
+                        [autoClose]="true"
+                        (dateSelect)="onNgbDatepickerSelection($event)"
+                        #ngbDatepickerIdentifier="ngbDatepicker"
+                        [readonly]="!this.editable"
+                        (focus)="focusTriggered($event)">
+                <input
+                        [specialCharacters]="[ '/' ,']' , '\\' ]"
+                        mask="{{convertedMask}}"
+                        class="form-control {{fieldClass}} ctrl-field"
+                        placeholder="{{mask}}"
+                        [(ngModel)]="model"
+                        [readonly]="!this.editable"
+                        (keydown)="onKeyDownEvent($event)"
+                        (focus)="focusTriggered($event)"
+                        (focusout)="onFocusOut()"
+                        (click)="eventOccuredActions('click',$event)"
+                        (change)="eventOccuredActions('change',$event)"
+                        (focus)="eventOccuredActions('focus',$event)"
+                        (focusout)="eventOccuredActions('focusout',$event)"
+                        (drag)="eventOccuredActions('drag',$event)"
+                        (dragend)="eventOccuredActions('dragend',$event)"
+                        (mousemove)="eventOccuredActions('mousemove',$event)"
+                        (mouseout)="eventOccuredActions('mouseout',$event)"
+                        (mouseover)="eventOccuredActions('mouseover',$event)"
+                        (mouseup)="eventOccuredActions('mouseup',$event)"
+                        (resize)="eventOccuredActions('resize',$event)">
+            </div>
+        </td>
+        <td>
+            <div class="input-group input-group-alternative" style="width: 100px;">
+                <div class="input-group-prepend">
+                    <span (click)="ngbDatepickerIdentifier.toggle()" class="input-group-text"><i
+                            class="fa-solid fa-clock" style="color: #0081f1;"></i></span>
+                </div>
+                <input type="text"
+                       [specialCharacters]="[ '/' ,':' , '\\' ]"
+                       mask="00:00"
+                       class="form-control {{fieldClass}} ctrl-field"
+                       placeholder="hh:mm"
+                       [(ngModel)]="timeModel"
+                       [readonly]="!this.editable"
+                       (keydown)="onKeyDownEvent($event)"
+                       (focus)="focusTriggered($event)"
+                       (focusout)="onFocusOut()"
+                       (click)="eventOccuredActions('click',$event)"
+                       (change)="eventOccuredActions('change',$event)"
+                       (focus)="eventOccuredActions('focus',$event)"
+                       (focusout)="eventOccuredActions('focusout',$event)"
+                       (drag)="eventOccuredActions('drag',$event)"
+                       (dragend)="eventOccuredActions('dragend',$event)"
+                       (mousemove)="eventOccuredActions('mousemove',$event)"
+                       (mouseout)="eventOccuredActions('mouseout',$event)"
+                       (mouseover)="eventOccuredActions('mouseover',$event)"
+                       (mouseup)="eventOccuredActions('mouseup',$event)"
+                       (resize)="eventOccuredActions('resize',$event)">
+            </div>
+        </td>
+    </tr>
+</table>
+
+
