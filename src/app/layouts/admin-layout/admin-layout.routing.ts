@@ -10,6 +10,9 @@ import { NotificationsComponent } from '../../pages/notifications/notifications.
 import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
 import {InstallationComponent} from '../../pages/installation/installation.component';
 import {FloorPlansComponent} from '../../pages/floor-plans/floor-plans.component';
+import {RecordedEventsComponent} from '../../pages/recorded-events/recorded-events.component';
+import {CurrentEventsComponent} from '../../pages/current-events/current-events.component';
+import {WirelessDevicesComponent} from '../../pages/wireless-devices/wireless-devices.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -21,5 +24,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'installation',   component: InstallationComponent },
-    { path: 'floor-plans',    component: FloorPlansComponent }
+    { path: 'wless-devices',  component: WirelessDevicesComponent },
+    { path: 'floor-plans',    component: FloorPlansComponent },
+    { path: 'rec-events',     component: RecordedEventsComponent },
+    { path: 'cur-events',     component: CurrentEventsComponent },
 ];
