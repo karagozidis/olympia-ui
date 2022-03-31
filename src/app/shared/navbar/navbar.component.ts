@@ -56,26 +56,28 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     startProgressBar() {
-        this.stopProgressBar();
-        this.progressBarInterval = setInterval(() => {
-            if (this.progressBarPercentage < 40) {
-                this.progressBarPercentage += 8;
-            } else if (this.progressBarPercentage < 60) {
-                this.progressBarPercentage += 3;
-            } else if (this.progressBarPercentage < 100) {
-                this.progressBarPercentage += 1;
-            }
-        }, 800);
+        this.progressBarPercentage = 100;
+        // this.stopProgressBar();
+        // this.progressBarInterval = setInterval(() => {
+        //     if (this.progressBarPercentage < 40) {
+        //         this.progressBarPercentage += 8;
+        //     } else if (this.progressBarPercentage < 60) {
+        //         this.progressBarPercentage += 3;
+        //     } else if (this.progressBarPercentage < 100) {
+        //         this.progressBarPercentage += 1;
+        //     }
+        // }, 800);
     }
 
     stopProgressBar() {
-        if ( this.progressBarInterval) {
-            clearInterval(this.progressBarInterval);
-            if (this.progressBarPercentage > 0) { this.progressBarPercentage = 100; }
-             setTimeout( () => {
-                 if (this.progressBarPercentage === 100) { this.progressBarPercentage = 0; }
-             }, 400);
-        }
+        this.progressBarPercentage = 0;
+        // if ( this.progressBarInterval) {
+        //     clearInterval(this.progressBarInterval);
+        //     if (this.progressBarPercentage > 0) { this.progressBarPercentage = 100; }
+        //      setTimeout( () => {
+        //          if (this.progressBarPercentage === 100) { this.progressBarPercentage = 0; }
+        //      }, 400);
+        // }
     }
 
     ngOnDestroy(): void {
