@@ -55,9 +55,10 @@ function readAppConfig() {
 }
 
 function createWindow () {
+    const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: width,
+    height: height,
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true,
